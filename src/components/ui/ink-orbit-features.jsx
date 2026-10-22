@@ -565,25 +565,25 @@ function InsightsCard({ copy, uid, reduced }) {
         <svg className="ib-diagram ib-chart" viewBox={"0 0 " + W + " " + (H + 6)} onPointerMove={onMove} onPointerLeave={() => setHover(-1)} role="img" aria-label={copy.title + " chart"}>
           <defs>
             <linearGradient id={fill} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stopColor="#111111" stopOpacity=".15" />
-              <stop offset="1" stopColor="#111111" stopOpacity="0" />
+              <stop offset="0" stopColor="#EE4326" stopOpacity=".35" />
+              <stop offset="1" stopColor="#EE4326" stopOpacity="0" />
             </linearGradient>
           </defs>
           {[0.25, 0.5, 0.75].map((g) => (
-            <line key={g} x1="14" x2={W - 14} y1={H * g} y2={H * g} stroke="var(--ib-line)" />
+            <line key={g} x1="14" x2={W - 14} y1={H * g} y2={H * g} stroke="rgba(255,255,255,0.08)" />
           ))}
           <path d={area} fill={"url(#" + fill + ")"} />
-          <path d={line} fill="none" stroke="#111111" strokeWidth="1.6" pathLength={1} className="ib-line-draw" opacity=".9" />
-          <line x1={points[split][0]} x2={points[split][0]} y1="10" y2={H - 14} stroke="var(--ib-line-strong)" strokeDasharray="2 3" />
-          <text x={points[split][0] - 4} y={H - 18} textAnchor="end" fontSize="7" fill="var(--ib-faint)" fontFamily="var(--ib-mono)">
+          <path d={line} fill="none" stroke="#EE4326" strokeWidth="2" pathLength={1} className="ib-line-draw" opacity="1" />
+          <line x1={points[split][0]} x2={points[split][0]} y1="10" y2={H - 14} stroke="rgba(255,255,255,0.3)" strokeDasharray="2 3" />
+          <text x={points[split][0] - 4} y={H - 18} textAnchor="end" fontSize="7" fill="rgba(255,255,255,0.4)" fontFamily="var(--ib-mono)">
             EXPANSION
           </text>
-          {hover >= 0 && <line x1={p[0]} x2={p[0]} y1="8" y2={H - 14} stroke="#111111" strokeOpacity=".3" />}
-          {!reduced && hover < 0 && <circle cx={last[0]} cy={last[1]} r="7" fill="#111111" opacity=".12" className="ib-glow" />}
-          <circle cx={p[0]} cy={p[1]} r="3.2" fill="var(--ib-raise)" stroke="#111111" strokeWidth="1.8" />
+          {hover >= 0 && <line x1={p[0]} x2={p[0]} y1="8" y2={H - 14} stroke="rgba(255,255,255,0.2)" strokeOpacity="1" />}
+          {!reduced && hover < 0 && <circle cx={last[0]} cy={last[1]} r="7" fill="#EE4326" opacity=".2" className="ib-glow" />}
+          <circle cx={p[0]} cy={p[1]} r="3.5" fill="#F48A25" stroke="#FCFBF8" strokeWidth="1.5" />
           <g transform={"translate(" + clamp(p[0], 40, W - 40) + "," + (p[1] < 34 ? p[1] + 22 : p[1] - 12) + ")"}>
-            <rect x="-30" y="-11" width="60" height="15" rx="2" fill="var(--ib-inv)" />
-            <text x="0" y="-1" textAnchor="middle" fontSize="7.5" fill="var(--ib-inv-ink)" fontFamily="var(--ib-mono)">
+            <rect x="-30" y="-11" width="60" height="15" rx="2" fill="#EE4326" />
+            <text x="0" y="-1" textAnchor="middle" fontSize="7.5" fill="#FFFFFF" fontFamily="var(--ib-mono)">
               {(i >= split ? "exp " : "wk " + (i + 1) + " ") + (pct >= 0 ? "+" : "") + pct + "%"}
             </text>
           </g>

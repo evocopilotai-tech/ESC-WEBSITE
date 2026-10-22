@@ -11,29 +11,41 @@ import { Join } from './components/join/Join';
 export function App() {
   return (
     <Shell>
-      {/* 00. Hero Section */}
+      {/* Skip to main content — accessibility + SEO */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-[#EE4326] focus:text-white focus:font-mono focus:text-sm focus:rounded-sm focus:outline-none"
+      >
+        Skip to main content
+      </a>
+
+      {/* Hero — above the fold landmark */}
       <Hero />
 
-      {/* 01. About Section */}
-      <About />
+      {/* Main content landmark — wraps all body sections for accessibility & SEO */}
+      <main id="main-content" role="main" aria-label="EvoCopilot Student Chapter — Main Content">
 
-      {/* 02. Our Motive Section */}
-      <Motive />
+        {/* 01. About Section */}
+        <About />
 
-      {/* 03. What We Do / Experiences Section */}
-      <Experiences />
+        {/* 02. Our Motive Section */}
+        <Motive />
 
-      {/* 04. Campus Gallery / Visual Archive */}
-      <Gallery />
+        {/* 03. What We Do / Experiences Section */}
+        <Experiences />
 
-      {/* 05. Faculty Coordinator & Core Team Directory */}
-      <Team />
+        {/* 04. Campus Gallery / Visual Archive */}
+        <Gallery />
 
-      {/* 06. Join Section */}
-      <Join />
+        {/* 05. Core Team Directory */}
+        <Team />
+
+        {/* 06. Join / Community Section */}
+        <Join />
+
+      </main>
     </Shell>
   );
 }
 
 export default App;
-

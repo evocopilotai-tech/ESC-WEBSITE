@@ -1,0 +1,17 @@
+# EvoCopilot Student Chapter — BV(DU)COEP Pune
+# https://evocopilotai-tech.github.io/ESC-WEBSITE/
+
+User-agent: *
+Allow: /
+
+# Disallow build artifacts and private paths
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /audit-results/
+Disallow: /scripts/
+
+# Crawl-delay for polite bots
+Crawl-delay: 5
+
+# Sitemap
+Sitemap: https://evocopilotai-tech.github.io/ESC-WEBSITE/sitemap.xml
