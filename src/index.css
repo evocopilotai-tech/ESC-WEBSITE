@@ -83,8 +83,9 @@ img, svg, video {
   max-width: 100%;
 }
 
-/* No horizontal scroll anywhere */
-.overflow-x-clip, section, header, footer, main {
+/* Prevent horizontal overflow on body only — do NOT add to section/main/header
+   as it breaks GSAP ScrollTrigger pinning */
+.overflow-x-clip {
   overflow-x: clip;
 }
 
