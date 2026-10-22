@@ -24,7 +24,7 @@ export const CHAPTER_CONFIG = {
   socials: {
     github: 'https://github.com/evocopilot-BV(DU)COEP',
     linkedin: 'https://www.linkedin.com/company/evocopilot-student-chapter-bvdu-coep/',
-    instagram: 'https://www.instagram.com/esc_BV(DU)COEPp?cplk=NDM4cDl3OW83OW13',
+    instagram: 'https://www.instagram.com/esc_bvpcoep?dlrf=NDM4cDl3OW83OW13',
     whatsapp: 'https://chat.whatsapp.com/LyPvqlTDMzsLkdMp7GUGQK?s=cl&p=a&mlu=4&ilr=4',
     email: 'evocopilotai@gmail.com',
   },
