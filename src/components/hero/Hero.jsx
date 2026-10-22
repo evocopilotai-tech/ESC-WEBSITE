@@ -27,7 +27,7 @@ export const Hero = () => (
         initial="hidden"
         animate="visible"
         className="relative z-10 flex flex-col items-center justify-center
-                   min-h-[100svh] pt-32 sm:pt-36 md:pt-40 pb-16 px-4 sm:px-6 lg:px-8 text-center pointer-events-none"
+                   min-h-[100svh] pt-40 sm:pt-44 md:pt-48 pb-16 px-4 sm:px-6 lg:px-8 text-center pointer-events-none"
       >
 
         {/* Chapter badge */}

@@ -29,9 +29,10 @@ export function TailwindImageAccordion({ items = [], className = "" }) {
             key={item?.id || item?.name || i}
             className="group/article relative w-full md:not-[&:hover]:group-hover:w-[12%] md:[&:not(:focus-within):not(:hover)]:group-focus-within:w-[12%] transition-all duration-500 ease-[cubic-bezier(.5,.85,.25,1.15)] rounded-2xl overflow-hidden border border-white/10 hover:border-[#EE4326]/60 bg-[#121212] shadow-[0_10px_30px_rgba(0,0,0,0.6)] before:absolute before:inset-x-0 before:bottom-0 before:h-3/4 before:bg-gradient-to-t before:from-black/98 before:via-black/70 before:to-transparent before:z-10 focus-within:ring-2 focus-within:ring-[#EE4326]"
           >
-            {/* Portrait — object-center focuses on face, not background */}
+            {/* Portrait — objectPosition is per-member to crop to face */}
             <img
-              className="object-cover object-center h-64 sm:h-80 md:h-[400px] lg:h-[480px] w-full transition-transform duration-700 ease-out group-hover/article:scale-105"
+              className="object-cover h-64 sm:h-80 md:h-[400px] lg:h-[480px] w-full transition-transform duration-700 ease-out group-hover/article:scale-105"
+              style={{ objectPosition: item?.objectPosition || 'center 35%' }}
               src={item?.image || item?.url}
               alt={item?.name || item?.title || "Team member portrait"}
               loading="lazy"

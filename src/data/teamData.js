@@ -149,6 +149,7 @@ export const CORE_MEMBERS = [
     department: 'BV(DU)COEP Pune · Class of 2028',
     bio: 'Driving chapter storytelling, digital awareness, and engagement campaigns across developer channels.',
     image: anushkaImg,
+    objectPosition: 'center 60%', // face is in lower half of photo
     socials: {
       linkedin: 'https://www.linkedin.com/in/anushka-987995324',
       github: null,
