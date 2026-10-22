@@ -15,7 +15,8 @@ export function TailwindImageAccordion({ items = [], className = "" }) {
   return (
     <div
       className={cn(
-        "group flex max-md:flex-col justify-center gap-2.5 w-full mx-auto my-6",
+        /* Mobile: vertical stack | md+: horizontal accordion */
+        "group flex flex-col md:flex-row justify-center gap-3 w-full mx-auto my-6",
         className
       )}
     >
@@ -26,75 +27,65 @@ export function TailwindImageAccordion({ items = [], className = "" }) {
         return (
           <article
             key={item?.id || item?.name || i}
-            className="group/article relative w-full md:not-[&:hover]:group-hover:w-[12%] md:[&:not(:focus-within):not(:hover)]:group-focus-within:w-[12%] transition-all duration-500 ease-[cubic-bezier(.5,.85,.25,1.15)] rounded-2xl overflow-hidden border border-white/10 hover:border-[#EE4326]/60 bg-[#121212] shadow-[0_10px_30px_rgba(0,0,0,0.6)] before:absolute before:inset-x-0 before:bottom-0 before:h-2/3 before:bg-gradient-to-t before:from-black/95 before:via-black/60 before:to-transparent before:z-10 before:transition-opacity md:before:opacity-90 after:opacity-0 md:not-[&:hover]:group-hover:after:opacity-60 md:[&:not(:focus-within):not(:hover)]:group-focus-within:after:opacity-60 after:absolute after:inset-0 after:bg-black/40 after:backdrop-blur-[1px] after:rounded-2xl after:transition-all after:z-10 focus-within:ring-2 focus-within:ring-[#EE4326]"
+            /* On mobile: full-width card. On md+: accordion expand/collapse */
+            className="group/article relative w-full md:not-[&:hover]:group-hover:w-[12%] md:[&:not(:focus-within):not(:hover)]:group-focus-within:w-[12%] transition-all duration-500 ease-[cubic-bezier(.5,.85,.25,1.15)] rounded-2xl overflow-hidden border border-white/10 hover:border-[#EE4326]/60 bg-[#121212] shadow-[0_10px_30px_rgba(0,0,0,0.6)] before:absolute before:inset-x-0 before:bottom-0 before:h-2/3 before:bg-gradient-to-t before:from-black/95 before:via-black/60 before:to-transparent before:z-10 focus-within:ring-2 focus-within:ring-[#EE4326]"
           >
-            {/* Overlay link & text contents */}
+            {/* Portrait Image */}
+            <img
+              className="object-cover object-top h-56 sm:h-72 md:h-[380px] lg:h-[460px] w-full transition-transform duration-700 ease-out group-hover/article:scale-105"
+              src={item?.image || item?.url}
+              alt={item?.name || item?.title || "Team member portrait"}
+              loading="lazy"
+            />
+
+            {/* Text overlay — always visible on mobile */}
             <div className="absolute inset-0 z-20 p-4 sm:p-5 flex flex-col justify-between pointer-events-none">
-              {/* Top role badge & category */}
+              {/* Top: role badge */}
               <div className="flex items-center justify-between gap-1">
-                <span className="px-2 py-0.5 text-[9px] font-mono tracking-wider uppercase text-white bg-black/80 border border-white/15 rounded-full font-semibold shadow-xs">
+                <span className="px-2 py-0.5 text-[9px] font-mono tracking-wider uppercase text-white bg-black/80 border border-white/15 rounded-full font-semibold">
                   {item?.roleTag || item?.role}
                 </span>
-
                 {item?.categoryLabel && (
-                  <span className="text-[10px] font-mono text-[#EE4326] font-semibold uppercase tracking-wider hidden sm:inline md:opacity-0 group-hover/article:opacity-100 transition duration-300">
+                  <span className="text-[10px] font-mono text-[#EE4326] font-semibold uppercase tracking-wider hidden sm:inline">
                     {item?.categoryLabel}
                   </span>
                 )}
               </div>
 
-              {/* Bottom detail container */}
+              {/* Bottom: name, role, linkedin */}
               <div className="flex flex-col">
-                {/* Role title */}
-                <span className="text-[11px] font-mono tracking-widest text-[#EE4326] font-semibold uppercase mb-1 md:whitespace-nowrap md:truncate md:opacity-0 group-hover/article:opacity-100 group-focus-within/article:opacity-100 md:translate-y-2 group-hover/article:translate-y-0 group-focus-within/article:translate-y-0 transition duration-200 ease-[cubic-bezier(.5,.85,.25,1.8)] group-hover/article:delay-100 group-focus-within/article:delay-100">
+                <span className="text-[11px] font-mono tracking-widest text-[#EE4326] font-semibold uppercase mb-1 truncate md:opacity-0 group-hover/article:opacity-100 group-focus-within/article:opacity-100 translate-y-0 md:translate-y-2 group-hover/article:translate-y-0 transition duration-200 delay-75">
                   {item?.role || item?.description}
                 </span>
 
-                {/* Name */}
-                <h3 className="text-xl sm:text-2xl font-editorial-sans font-bold text-white md:whitespace-nowrap md:truncate leading-tight">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white leading-tight truncate">
                   {item?.name || item?.title}
                 </h3>
 
-                {/* Department or class */}
                 {item?.department && (
-                  <span className="text-xs text-white/60 font-mono mt-0.5 md:whitespace-nowrap md:truncate md:opacity-0 group-hover/article:opacity-100 group-focus-within/article:opacity-100 md:translate-y-2 group-hover/article:translate-y-0 group-focus-within/article:translate-y-0 transition duration-200 ease-[cubic-bezier(.5,.85,.25,1.8)] group-hover/article:delay-200 group-focus-within/article:delay-200">
+                  <span className="text-xs text-white/60 font-mono mt-0.5 truncate md:opacity-0 group-hover/article:opacity-100 group-focus-within/article:opacity-100 translate-y-0 md:translate-y-2 group-hover/article:translate-y-0 transition duration-200 delay-100">
                     {item?.department}
                   </span>
                 )}
 
-                {/* Bio text */}
-                {item?.bio && (
-                  <p className="text-xs text-white/75 font-editorial-sans mt-2 line-clamp-2 md:opacity-0 group-hover/article:opacity-100 group-focus-within/article:opacity-100 md:translate-y-2 group-hover/article:translate-y-0 group-focus-within/article:translate-y-0 transition duration-200 ease-[cubic-bezier(.5,.85,.25,1.8)] group-hover/article:delay-300 group-focus-within/article:delay-300">
-                    {item?.bio}
-                  </p>
-                )}
-
-                {/* LinkedIn Action Button */}
+                {/* LinkedIn — always tappable on mobile */}
                 {hasExternalLink && (
-                  <div className="mt-3 pointer-events-auto md:opacity-0 group-hover/article:opacity-100 group-focus-within/article:opacity-100 md:translate-y-2 group-hover/article:translate-y-0 group-focus-within/article:translate-y-0 transition duration-200 ease-[cubic-bezier(.5,.85,.25,1.8)] group-hover/article:delay-400 group-focus-within/article:delay-400">
+                  <div className="mt-2 pointer-events-auto md:opacity-0 group-hover/article:opacity-100 group-focus-within/article:opacity-100 translate-y-0 md:translate-y-2 group-hover/article:translate-y-0 transition duration-200 delay-150">
                     <a
                       href={link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#EE4326] hover:bg-[#d63a20] text-white text-xs font-mono font-medium transition-all shadow-md group/btn"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#EE4326] active:bg-[#c0321b] text-white text-xs font-mono font-medium shadow-md"
                       aria-label={`Connect with ${item?.name || item?.title} on LinkedIn`}
                     >
                       <LinkedInIcon className="w-3.5 h-3.5" />
-                      <span>LinkedIn Connect</span>
-                      <ArrowUpRight className="w-3 h-3 opacity-80 group-hover/btn:opacity-100" />
+                      <span>LinkedIn</span>
+                      <ArrowUpRight className="w-3 h-3 opacity-80" />
                     </a>
                   </div>
                 )}
               </div>
             </div>
-
-            {/* Portrait Image */}
-            <img
-              className="object-cover h-80 sm:h-[420px] lg:h-[480px] w-full transition-transform duration-700 ease-out group-hover/article:scale-105"
-              src={item?.image || item?.url}
-              alt={item?.name || item?.title || "Team member portrait"}
-              loading="lazy"
-            />
           </article>
         );
       })}

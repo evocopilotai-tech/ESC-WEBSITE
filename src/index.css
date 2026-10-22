@@ -43,6 +43,8 @@ html {
   background-color: #0A0A0A;
   color: #FCFBF8;
   font-family: var(--font-sans);
+  overflow-x: hidden; /* prevent horizontal scroll on mobile */
+  -webkit-text-size-adjust: 100%; /* prevent font scaling on iOS */
 }
 
 body {
@@ -56,19 +58,34 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom Editorial Scrollbar */
+/* Custom Scrollbar — dark theme */
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #FCFBF8;
+  background: #0A0A0A;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D8D2C7;
+  background: #383838;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #B5AFA4;
+  background: #EE4326;
+}
+
+/* Mobile tap highlight removal */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent images / SVGs overflowing on mobile */
+img, svg, video {
+  max-width: 100%;
+}
+
+/* No horizontal scroll anywhere */
+.overflow-x-clip, section, header, footer, main {
+  overflow-x: clip;
 }
 
 /* Editorial subtle grid lines */

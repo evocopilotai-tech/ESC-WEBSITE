@@ -5,20 +5,20 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 /* Geometry */
-const CARD_H = 0.38; // front card height, of the stage
-const CARD_MAX_W = 0.34; // never wider than this much of the stage
-const CARD_RATIO = 1.45; // card width / height
-const STEP = 40; // degrees between cards on the drum
-const DRUM = 2.22; // drum radius, in card heights
-const LENS = 2.7; // perspective distance
-const RING_R = 1.14; // ring radius
+const CARD_H = 0.42;      // taller card on mobile
+const CARD_MAX_W = 0.72;  // allow wider card on mobile
+const CARD_RATIO = 1.45;
+const STEP = 40;
+const DRUM = 2.22;
+const LENS = 2.7;
+const RING_R = 1.14;
 const BOW = 1.82;
-const TITLE = 0.124; // ring label and front-card title
-const INDEX = 0.04; // index down the right-hand side
+const TITLE = 0.124;
+const INDEX = 0.04;
 const CULL = 1.6;
 
-const WHEEL_UNITS = 900;
-const DRAG_UNITS = 420;
+const WHEEL_UNITS = 700;  // easier to scroll on mobile
+const DRAG_UNITS = 280;   // more responsive drag on mobile
 const SETTLE = 140;
 const EASE = 0.12;
 
@@ -192,7 +192,7 @@ export function WorksWheel({
     <section
       aria-label={label}
       className={cn(
-        "relative h-[80vh] min-h-[550px] max-h-[850px] w-full overflow-hidden select-none bg-[#0A0A0A] text-white",
+        "relative h-[65vh] sm:h-[75vh] md:h-[80vh] min-h-[420px] sm:min-h-[500px] max-h-[850px] w-full overflow-hidden select-none bg-[#0A0A0A] text-white touch-pan-y",
         className,
       )}
       {...props}
