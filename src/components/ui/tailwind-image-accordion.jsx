@@ -27,50 +27,47 @@ export function TailwindImageAccordion({ items = [], className = "" }) {
         return (
           <article
             key={item?.id || item?.name || i}
-            /* On mobile: full-width card. On md+: accordion expand/collapse */
-            className="group/article relative w-full md:not-[&:hover]:group-hover:w-[12%] md:[&:not(:focus-within):not(:hover)]:group-focus-within:w-[12%] transition-all duration-500 ease-[cubic-bezier(.5,.85,.25,1.15)] rounded-2xl overflow-hidden border border-white/10 hover:border-[#EE4326]/60 bg-[#121212] shadow-[0_10px_30px_rgba(0,0,0,0.6)] before:absolute before:inset-x-0 before:bottom-0 before:h-2/3 before:bg-gradient-to-t before:from-black/95 before:via-black/60 before:to-transparent before:z-10 focus-within:ring-2 focus-within:ring-[#EE4326]"
+            className="group/article relative w-full md:not-[&:hover]:group-hover:w-[12%] md:[&:not(:focus-within):not(:hover)]:group-focus-within:w-[12%] transition-all duration-500 ease-[cubic-bezier(.5,.85,.25,1.15)] rounded-2xl overflow-hidden border border-white/10 hover:border-[#EE4326]/60 bg-[#121212] shadow-[0_10px_30px_rgba(0,0,0,0.6)] before:absolute before:inset-x-0 before:bottom-0 before:h-3/4 before:bg-gradient-to-t before:from-black/98 before:via-black/70 before:to-transparent before:z-10 focus-within:ring-2 focus-within:ring-[#EE4326]"
           >
-            {/* Portrait Image */}
+            {/* Portrait — object-center focuses on face, not background */}
             <img
-              className="object-cover object-top h-56 sm:h-72 md:h-[380px] lg:h-[460px] w-full transition-transform duration-700 ease-out group-hover/article:scale-105"
+              className="object-cover object-center h-64 sm:h-80 md:h-[400px] lg:h-[480px] w-full transition-transform duration-700 ease-out group-hover/article:scale-105"
               src={item?.image || item?.url}
               alt={item?.name || item?.title || "Team member portrait"}
               loading="lazy"
             />
 
-            {/* Text overlay — always visible on mobile */}
-            <div className="absolute inset-0 z-20 p-4 sm:p-5 flex flex-col justify-between pointer-events-none">
-              {/* Top: role badge */}
-              <div className="flex items-center justify-between gap-1">
-                <span className="px-2 py-0.5 text-[9px] font-mono tracking-wider uppercase text-white bg-black/80 border border-white/15 rounded-full font-semibold">
-                  {item?.roleTag || item?.role}
-                </span>
-                {item?.categoryLabel && (
-                  <span className="text-[10px] font-mono text-[#EE4326] font-semibold uppercase tracking-wider hidden sm:inline">
-                    {item?.categoryLabel}
-                  </span>
-                )}
-              </div>
-
-              {/* Bottom: name, role, linkedin */}
-              <div className="flex flex-col">
-                <span className="text-[11px] font-mono tracking-widest text-[#EE4326] font-semibold uppercase mb-1 truncate md:opacity-0 group-hover/article:opacity-100 group-focus-within/article:opacity-100 translate-y-0 md:translate-y-2 group-hover/article:translate-y-0 transition duration-200 delay-75">
+            {/* Text overlay */}
+            <div className="absolute inset-0 z-20 p-4 sm:p-5 flex flex-col justify-end pointer-events-none">
+              {/* Bottom detail container — always visible */}
+              <div className="flex flex-col gap-1">
+                {/* Role — orange mono tag, shown once at bottom */}
+                <span className="text-[10px] font-mono tracking-widest text-[#EE4326] font-semibold uppercase">
                   {item?.role || item?.description}
                 </span>
 
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white leading-tight truncate">
+                {/* Name */}
+                <h3 className="text-xl sm:text-2xl font-bold text-white leading-tight">
                   {item?.name || item?.title}
                 </h3>
 
+                {/* Department */}
                 {item?.department && (
-                  <span className="text-xs text-white/60 font-mono mt-0.5 truncate md:opacity-0 group-hover/article:opacity-100 group-focus-within/article:opacity-100 translate-y-0 md:translate-y-2 group-hover/article:translate-y-0 transition duration-200 delay-100">
+                  <span className="text-[11px] text-white/60 font-mono">
                     {item?.department}
                   </span>
                 )}
 
-                {/* LinkedIn — always tappable on mobile */}
+                {/* Bio — only on sm+ so mobile stays clean */}
+                {item?.bio && (
+                  <p className="text-xs text-white/70 mt-1 line-clamp-2 hidden sm:block md:opacity-0 group-hover/article:opacity-100 transition duration-300">
+                    {item?.bio}
+                  </p>
+                )}
+
+                {/* LinkedIn — always tappable */}
                 {hasExternalLink && (
-                  <div className="mt-2 pointer-events-auto md:opacity-0 group-hover/article:opacity-100 group-focus-within/article:opacity-100 translate-y-0 md:translate-y-2 group-hover/article:translate-y-0 transition duration-200 delay-150">
+                  <div className="mt-2 pointer-events-auto">
                     <a
                       href={link}
                       target="_blank"

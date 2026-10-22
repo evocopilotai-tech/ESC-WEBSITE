@@ -4,15 +4,21 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 
 /**
  * YouCanScroll — Pinned kinetic word scroller.
- * Desktop: proper GSAP pin+scrub.
- * Mobile (<768px): simple auto-cycle animation (no pin — avoids mobile Chrome scroll bugs).
+ *
+ * Desktop (≥768px): GSAP ScrollTrigger pin + scrub.
+ *   - Requires the parent section to have NO overflow:hidden/clip.
+ *
+ * Mobile (<768px): CSS transform auto-cycle (no GSAP pin needed).
+ *   - Avoids mobile Chrome scroll-hijack bugs entirely.
  */
 export default function YouCanScroll({ words = null }) {
   const wrapperRef = useRef(null);
   const stickyRef  = useRef(null);
   const listRef    = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth < 768 : false
+  );
 
   const defaultWords = [
     "design.",
@@ -40,17 +46,16 @@ export default function YouCanScroll({ words = null }) {
 
   const wordList = words || defaultWords;
 
-  /* Detect mobile once on mount */
+  /* ── Detect mobile on resize ─────────────────────────── */
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768);
-    check();
-    window.addEventListener("resize", check);
+    window.addEventListener("resize", check, { passive: true });
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  /* ── DESKTOP: GSAP pin + scrub ─────────────────────────────── */
+  /* ── DESKTOP: GSAP pin + scrub ───────────────────────── */
   useEffect(() => {
-    if (isMobile) return; // skip on mobile
+    if (isMobile) return;
 
     gsap.registerPlugin(ScrollTrigger);
 
@@ -60,30 +65,31 @@ export default function YouCanScroll({ words = null }) {
     if (!wrapper || !sticky || !list) return;
 
     let ctx;
-    const raf = requestAnimationFrame(() => {
+    // Use rAF to ensure DOM has painted and measurements are accurate
+    const rafId = requestAnimationFrame(() => {
       const items = list.querySelectorAll("li");
       if (!items.length) return;
 
-      const itemH = items[0].getBoundingClientRect().height;
-      if (!itemH) return;
+      const itemH = sticky.offsetHeight / wordList.length;
+      const totalScroll = (wordList.length - 1) * sticky.offsetHeight;
 
-      const totalScroll = (wordList.length - 1) * itemH;
+      // Set wrapper height so the section is tall enough to scroll through all words
       wrapper.style.height = `calc(100vh + ${totalScroll}px)`;
 
       ctx = gsap.context(() => {
         gsap.to(list, {
-          y: -totalScroll,
+          y: () => -(sticky.offsetHeight * (wordList.length - 1)),
           ease: "none",
           scrollTrigger: {
             trigger: wrapper,
             start: "top top",
-            end: `+=${totalScroll}`,
+            end: () => `+=${sticky.offsetHeight * (wordList.length - 1)}`,
             pin: sticky,
             pinSpacing: false,
-            scrub: 0.6,
+            scrub: 0.8,
             anticipatePin: 1,
             invalidateOnRefresh: true,
-            onUpdate: (self) => {
+            onUpdate(self) {
               const idx = Math.min(
                 wordList.length - 1,
                 Math.floor(self.progress * wordList.length)
@@ -92,29 +98,30 @@ export default function YouCanScroll({ words = null }) {
             },
           },
         });
-      });
+      }, wrapper);
     });
 
     return () => {
-      cancelAnimationFrame(raf);
+      cancelAnimationFrame(rafId);
       ctx?.revert();
     };
-  }, [isMobile]);
+  }, [isMobile, wordList.length]);
 
-  /* ── MOBILE: auto-cycle every 1.2s ─────────────────────────── */
+  /* ── MOBILE: auto-cycle every 1.1s ──────────────────── */
   useEffect(() => {
     if (!isMobile) return;
     const t = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % wordList.length);
-    }, 1200);
+    }, 1100);
     return () => clearInterval(t);
   }, [isMobile, wordList.length]);
 
-  /* ── Shared inner card UI ───────────────────────────────────── */
-  const Card = (
+  /* ── Card UI ─────────────────────────────────────────── */
+  const cardContent = (
     <div
       ref={stickyRef}
-      className="relative w-full h-[70vh] sm:h-[80vh] bg-[#0E0E0E] text-[#FCFBF8] flex flex-col justify-between overflow-hidden border border-white/10 rounded-sm select-none py-8 sm:py-16 px-5 sm:px-12 lg:px-20 shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
+      className="relative w-full bg-[#0E0E0E] text-[#FCFBF8] flex flex-col justify-between overflow-hidden border-y border-white/10 select-none py-8 sm:py-14 px-5 sm:px-12 lg:px-20"
+      style={{ height: "80vh", minHeight: 360, maxHeight: 700 }}
     >
       {/* Top bar */}
       <div className="flex items-center justify-between pb-4 border-b border-white/10 text-xs font-mono text-white/50">
@@ -134,28 +141,39 @@ export default function YouCanScroll({ words = null }) {
         </div>
       </div>
 
-      {/* Kinetic center stage */}
-      <div className="my-auto flex flex-col sm:flex-row items-start sm:items-center justify-center gap-2 sm:gap-4 py-4 sm:py-10">
-        <h2 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-editorial-serif font-normal tracking-tight text-white/50 shrink-0">
+      {/* Kinetic stage */}
+      <div className="my-auto flex flex-col sm:flex-row items-start sm:items-center justify-center gap-0 sm:gap-4">
+        <h2 className="text-3xl sm:text-5xl md:text-7xl font-editorial-serif font-normal tracking-tight text-white/50 shrink-0">
           you can&nbsp;
         </h2>
 
-        {/* Word window */}
-        <div className="relative h-12 sm:h-20 md:h-28 overflow-hidden flex items-start border-l-2 border-[#EE4326] pl-3 sm:pl-6">
+        {/* Sliding word window */}
+        <div
+          className="relative overflow-hidden flex items-start border-l-2 border-[#EE4326] pl-3 sm:pl-6"
+          style={{ height: "clamp(3rem, 10vw, 7rem)" }}
+        >
           <ul
             ref={listRef}
-            className="flex flex-col list-none p-0 m-0 text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-editorial-serif italic font-normal tracking-tight"
-            style={isMobile ? { transform: `translateY(-${activeIndex * 100}%)`, transition: "transform 0.5s cubic-bezier(0.4,0,0.2,1)" } : {}}
+            className="flex flex-col list-none p-0 m-0"
+            style={
+              isMobile
+                ? {
+                    transform: `translateY(-${activeIndex * 100}%)`,
+                    transition: "transform 0.45s cubic-bezier(0.4,0,0.2,1)",
+                  }
+                : {}
+            }
           >
             {wordList.map((text, i) => {
               const isActive = i === activeIndex;
               return (
                 <li
                   key={i}
-                  className={`h-12 sm:h-20 md:h-28 flex items-center transition-all duration-300 ${
+                  style={{ height: "clamp(3rem, 10vw, 7rem)" }}
+                  className={`flex items-center text-3xl sm:text-5xl md:text-7xl font-editorial-serif italic font-normal tracking-tight transition-all duration-300 ${
                     isActive
-                      ? "text-transparent bg-clip-text bg-gradient-to-r from-[#EE4326] via-[#F48A25] to-[#EE4326] font-semibold scale-105"
-                      : "text-white/20 scale-95"
+                      ? "text-transparent bg-clip-text bg-gradient-to-r from-[#EE4326] via-[#F48A25] to-[#EE4326]"
+                      : "text-white/15"
                   }`}
                 >
                   {text}
@@ -170,18 +188,20 @@ export default function YouCanScroll({ words = null }) {
       <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-white/40">
         <span className="uppercase text-white/60 text-[10px] sm:text-xs">BV(DU)COEP PUNE</span>
         <span className="uppercase tracking-widest text-[#EE4326] text-[10px] sm:text-xs">
-          IDEAS &rarr; IMPACT
+          IDEAS → IMPACT
         </span>
       </div>
     </div>
   );
 
-  /* On mobile: no wrapper height needed; on desktop: wrapper sets scroll height */
-  return isMobile ? (
-    <div className="w-full">{Card}</div>
-  ) : (
+  /* Mobile: no wrapper needed. Desktop: wrapper sets scroll height for GSAP */
+  if (isMobile) {
+    return <div className="w-full">{cardContent}</div>;
+  }
+
+  return (
     <div ref={wrapperRef} className="relative w-full">
-      {Card}
+      {cardContent}
     </div>
   );
 }

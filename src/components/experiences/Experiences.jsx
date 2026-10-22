@@ -11,8 +11,6 @@ import {
 
 import YouCanScroll from '../ui/you-can-scroll';
 
-
-
 export const Experiences = () => {
 
   const activities = [
@@ -66,21 +64,25 @@ export const Experiences = () => {
     },
   ];
 
-
-
-
   return (
+    /*
+     * IMPORTANT: Do NOT put overflow-hidden on this section wrapper —
+     * it will clip GSAP ScrollTrigger pin and break the YouCanScroll animation.
+     * The kinetic scroller sits outside the padded inner container so it can
+     * span full-width AND pin correctly.
+     */
     <section
       id="experiences"
-      className="relative py-20 sm:py-28 lg:py-36 bg-[#0A0A0A] text-[#FCFBF8] border-b border-white/10 overflow-hidden"
+      className="relative py-20 sm:py-28 lg:py-36 bg-[#0A0A0A] text-[#FCFBF8] border-b border-white/10"
     >
       {/* Editorial Vertical Architectural Guide Lines */}
       <div className="absolute inset-0 pointer-events-none opacity-40">
         <div className="h-full w-full max-w-7xl mx-auto border-x border-white/5" />
       </div>
 
+      {/* ── Inner content — constrained width ──────────────── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header: Oversized Section Index & Eyebrow */}
+        {/* Section Header */}
         <div className="exp-header flex flex-col sm:flex-row sm:items-end justify-between pb-8 mb-16 sm:mb-24 border-b border-white/10">
           <div className="flex items-center gap-4">
             <span className="font-editorial-serif text-5xl sm:text-6xl text-white font-normal leading-none select-none">
@@ -112,7 +114,7 @@ export const Experiences = () => {
           </p>
         </div>
 
-        {/* Alternating Editorial Timeline / Activity Matrix */}
+        {/* Activity Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           {activities.map((act) => {
             const Icon = act.icon;
@@ -122,7 +124,7 @@ export const Experiences = () => {
                 className="activity-item bg-[#121212] border border-white/10 hover:border-[#EE4326]/60 p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:shadow-[0_8px_30px_rgba(238,67,38,0.12)] group"
               >
                 <div>
-                  {/* Top Bar: Number & Tag */}
+                  {/* Top Bar */}
                   <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-5">
                     <span className="font-mono text-sm text-[#EE4326] font-semibold">
                       // {act.num}
@@ -153,7 +155,7 @@ export const Experiences = () => {
                   </p>
                 </div>
 
-                {/* Bottom Status Hairline */}
+                {/* Bottom Hairline */}
                 <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-white/40">
                   <span>BV(DU)COEP CAMPUS LABS</span>
                   <span className="text-white/80 flex items-center gap-1 group-hover:text-[#EE4326] transition-colors font-medium">
@@ -165,19 +167,23 @@ export const Experiences = () => {
             );
           })}
         </div>
+      </div>
 
-        {/* Dynamic Kinetic Action Scroller (YouCanScroll) */}
-        <div className="mt-20 sm:mt-28">
-          <div className="mb-6 flex flex-col sm:flex-row sm:items-end justify-between border-b border-white/10 pb-4">
-            <span className="font-mono text-xs uppercase tracking-wider text-[#EE4326] font-semibold">
-              // KINETIC CADENCE & ENGINEERING DISCIPLINE
-            </span>
-            <span className="text-[11px] font-mono text-white/40">
-              PINNED SCROLL SCRUBBER
-            </span>
-          </div>
-          <YouCanScroll />
+      {/* ── YouCanScroll — OUTSIDE the constrained inner div ──
+           Must NOT be inside overflow-hidden or max-w containers
+           for GSAP ScrollTrigger pin to work correctly.          ── */}
+      <div className="mt-20 sm:mt-28 relative z-10">
+        {/* Label row */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 flex flex-col sm:flex-row sm:items-end justify-between border-b border-white/10 pb-4">
+          <span className="font-mono text-xs uppercase tracking-wider text-[#EE4326] font-semibold">
+            // KINETIC CADENCE & ENGINEERING DISCIPLINE
+          </span>
+          <span className="text-[11px] font-mono text-white/40 mt-2 sm:mt-0">
+            SCROLL EXPERIENCE
+          </span>
         </div>
+        {/* The scroller itself — full section width, no overflow clip */}
+        <YouCanScroll />
       </div>
     </section>
   );
