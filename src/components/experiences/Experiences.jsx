@@ -73,7 +73,7 @@ export const Experiences = () => {
      */
     <section
       id="experiences"
-      className="relative py-20 sm:py-28 lg:py-36 bg-[#0A0A0A] text-[#FCFBF8] border-b border-white/10"
+      className="relative pt-16 sm:pt-24 pb-8 sm:pb-12 bg-[#0A0A0A] text-[#FCFBF8] border-b border-white/10"
     >
       {/* Editorial Vertical Architectural Guide Lines */}
       <div className="absolute inset-0 pointer-events-none opacity-40">
@@ -169,10 +169,8 @@ export const Experiences = () => {
         </div>
       </div>
 
-      {/* ── YouCanScroll — OUTSIDE the constrained inner div ──
-           Must NOT be inside overflow-hidden or max-w containers
-           for GSAP ScrollTrigger pin to work correctly.          ── */}
-      <div className="mt-20 sm:mt-28 relative z-10">
+      {/* ── YouCanScroll — OUTSIDE the constrained inner div ── */}
+      <div className="mt-14 sm:mt-20 relative z-10">
         {/* Label row */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6 flex flex-col sm:flex-row sm:items-end justify-between border-b border-white/10 pb-4">
           <span className="font-mono text-xs uppercase tracking-wider text-[#EE4326] font-semibold">
@@ -182,7 +180,7 @@ export const Experiences = () => {
             SCROLL EXPERIENCE
           </span>
         </div>
-        {/* The scroller itself — full section width, no overflow clip */}
+        {/* The scroller itself */}
         <YouCanScroll />
       </div>
     </section>

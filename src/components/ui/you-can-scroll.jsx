@@ -3,17 +3,14 @@ import React, { useEffect, useRef, useState, useCallback } from "react";
 /**
  * YouCanScroll — Kinetic word scroller.
  *
- * Strategy: CSS `position:sticky` for the card + a scroll event
- * listener to compute which word to highlight.  No GSAP, no ScrollTrigger,
- * no overflow dependency.  Works in every browser / every container.
- *
- * The outer wrapper is made tall enough so the section can be scrolled
- * through all words while the card stays stuck.
+ * Uses CSS sticky container with exact measured/consistent pixel heights
+ * for smooth scroll-driven kinetic typography.
  */
 export default function YouCanScroll({ words = null }) {
-  const wrapperRef  = useRef(null);
-  const cardRef     = useRef(null);
+  const wrapperRef = useRef(null);
+  const itemMeasureRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [itemHeight, setItemHeight] = useState(72);
   const [isMobile, setIsMobile] = useState(false);
 
   const defaultWords = [
@@ -41,56 +38,81 @@ export default function YouCanScroll({ words = null }) {
   ];
 
   const wordList = words || defaultWords;
-  const SCROLL_PER_WORD = 120; // px of scroll per word step
-  const totalExtraScroll = wordList.length * SCROLL_PER_WORD;
 
-  /* ── Mobile detection ──────────────────────────────────── */
+  // Responsive device check & measure item height
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
-    check();
-    window.addEventListener("resize", check, { passive: true });
-    return () => window.removeEventListener("resize", check);
+    const handleResize = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      if (itemMeasureRef.current) {
+        const h = itemMeasureRef.current.getBoundingClientRect().height;
+        if (h > 0) setItemHeight(h);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize, { passive: true });
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  /* ── Desktop: scroll listener ──────────────────────────── */
+  // Measure initial rendered item height
+  useEffect(() => {
+    if (itemMeasureRef.current) {
+      const h = itemMeasureRef.current.getBoundingClientRect().height;
+      if (h > 0) setItemHeight(h);
+    }
+  }, [isMobile]);
+
+  // Desktop: scroll listener to calculate active word based on wrapper scroll progress
   useEffect(() => {
     if (isMobile) return;
 
+    let ticking = false;
+
     const onScroll = () => {
-      const wrapper = wrapperRef.current;
-      if (!wrapper) return;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const wrapper = wrapperRef.current;
+          if (wrapper) {
+            const rect = wrapper.getBoundingClientRect();
+            const windowH = window.innerHeight;
+            // The active scroll range starts when the card sticks (rect.top <= (windowH - cardH) / 2 or rect.top <= 80)
+            const scrollDistance = -rect.top;
+            const maxScroll = rect.height - windowH;
 
-      const rect = wrapper.getBoundingClientRect();
-      // How far we've scrolled INTO the wrapper past the top of viewport
-      const scrolled = -rect.top;
-      if (scrolled < 0) return; // haven't reached section yet
-
-      const idx = Math.min(
-        wordList.length - 1,
-        Math.max(0, Math.floor(scrolled / SCROLL_PER_WORD))
-      );
-      setActiveIndex(idx);
+            if (maxScroll > 0) {
+              const progress = Math.min(1, Math.max(0, scrollDistance / maxScroll));
+              const targetIndex = Math.min(
+                wordList.length - 1,
+                Math.floor(progress * wordList.length)
+              );
+              setActiveIndex(targetIndex);
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll(); // initial sync
     return () => window.removeEventListener("scroll", onScroll);
   }, [isMobile, wordList.length]);
 
-  /* ── Mobile: auto-cycle ────────────────────────────────── */
+  // Mobile: auto-cycle every 1.2s
   useEffect(() => {
     if (!isMobile) return;
-    const t = setInterval(() => {
+    const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % wordList.length);
-    }, 1100);
-    return () => clearInterval(t);
+    }, 1200);
+    return () => clearInterval(interval);
   }, [isMobile, wordList.length]);
 
-  /* ── Shared card UI ────────────────────────────────────── */
   const Card = (
     <div
-      ref={cardRef}
-      className="w-full bg-[#0E0E0E] text-[#FCFBF8] flex flex-col justify-between border-y border-white/10 select-none py-8 sm:py-14 px-5 sm:px-12 lg:px-20"
-      style={{ height: "80vh", minHeight: 340, maxHeight: 680 }}
+      className="w-full bg-[#0E0E0E] text-[#FCFBF8] flex flex-col justify-between border-y border-white/10 select-none py-6 sm:py-10 lg:py-12 px-5 sm:px-12 lg:px-20 shadow-2xl rounded-sm"
+      style={{ minHeight: "360px", height: "55vh", maxHeight: "560px" }}
     >
       {/* Top bar */}
       <div className="flex items-center justify-between pb-4 border-b border-white/10 font-mono">
@@ -111,7 +133,7 @@ export default function YouCanScroll({ words = null }) {
       </div>
 
       {/* Kinetic center stage */}
-      <div className="my-auto flex flex-col sm:flex-row items-start sm:items-center gap-0 sm:gap-4">
+      <div className="my-auto flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-4 overflow-hidden py-2">
         {/* Static prefix */}
         <span className="text-3xl sm:text-5xl md:text-7xl font-editorial-serif font-normal tracking-tight text-white/40 shrink-0 whitespace-nowrap">
           you can&nbsp;
@@ -119,20 +141,21 @@ export default function YouCanScroll({ words = null }) {
 
         {/* Sliding word window */}
         <div
-          className="relative overflow-hidden border-l-2 border-[#EE4326] pl-3 sm:pl-6"
-          style={{ height: "clamp(2.8rem, 10vw, 6.5rem)" }}
+          className="relative overflow-hidden border-l-2 border-[#EE4326] pl-3 sm:pl-6 w-full"
+          style={{ height: `${itemHeight}px` }}
         >
           <ul
-            className="flex flex-col list-none p-0 m-0 transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]"
+            className="flex flex-col list-none p-0 m-0 transition-transform duration-300 ease-out will-change-transform"
             style={{
-              transform: `translateY(calc(-${activeIndex} * clamp(2.8rem, 10vw, 6.5rem)))`,
+              transform: `translate3d(0, -${activeIndex * itemHeight}px, 0)`,
             }}
           >
             {wordList.map((text, i) => (
               <li
                 key={i}
-                style={{ height: "clamp(2.8rem, 10vw, 6.5rem)" }}
-                className={`flex items-center text-3xl sm:text-5xl md:text-7xl font-editorial-serif italic font-normal tracking-tight transition-colors duration-300 whitespace-nowrap ${
+                ref={i === 0 ? itemMeasureRef : null}
+                style={{ height: "clamp(2.8rem, 8vw, 5.5rem)" }}
+                className={`flex items-center text-3xl sm:text-5xl md:text-7xl font-editorial-serif italic font-normal tracking-tight transition-colors duration-200 whitespace-nowrap leading-none ${
                   i === activeIndex
                     ? "text-transparent bg-clip-text bg-gradient-to-r from-[#EE4326] via-[#F48A25] to-[#EE4326]"
                     : "text-white/15"
@@ -155,26 +178,22 @@ export default function YouCanScroll({ words = null }) {
     </div>
   );
 
-  /* Mobile: just render the card normally (auto-cycling, no sticky needed) */
   if (isMobile) {
     return <div className="w-full">{Card}</div>;
   }
 
-  /*
-   * Desktop: wrapper is tall enough to scroll through all words.
-   * Card is CSS sticky so it stays visible while the section scrolls.
-   * No GSAP, no overflow dependency.
-   */
+  // Desktop: Controlled wrapper scroll height (~1200px extra scroll instead of 2500px+),
+  // perfectly centered sticky card.
   return (
     <div
       ref={wrapperRef}
-      style={{ height: `calc(80vh + ${totalExtraScroll}px)` }}
+      style={{ height: "240vh" }}
       className="relative w-full"
     >
-      {/* Sticky card — sticks to top of viewport while wrapper scrolls */}
-      <div className="sticky top-0 w-full" style={{ height: "80vh" }}>
+      <div className="sticky top-[18vh] w-full z-10 flex items-center justify-center">
         {Card}
       </div>
     </div>
   );
 }
+

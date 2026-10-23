@@ -22,7 +22,7 @@ export const Gallery = () => {
   return (
     <section id="gallery" className="relative w-full bg-[#0A0A0A] border-b border-white/10 overflow-hidden">
       {/* Editorial Header */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-28 pb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-6">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between pb-8 border-b border-white/10">
           <div className="flex items-center gap-4">
             <span className="font-editorial-serif text-5xl sm:text-6xl text-white/30 font-normal leading-none select-none">
