@@ -59,18 +59,11 @@ export const Motive = () => {
             <span className="font-editorial-serif text-5xl sm:text-6xl text-white font-normal leading-none select-none">
               02
             </span>
-            <div className="flex flex-col">
-              <span className="font-mono text-[11px] uppercase tracking-widest text-[#EE4326] font-semibold">
-                OUR MOTIVE · GUIDING ETHOS
-              </span>
+            <div className="flex flex-col justify-center">
               <span className="text-xs text-white/50 tracking-wider uppercase font-medium">
                 Four Pillars of the Student Chapter
               </span>
             </div>
-          </div>
-
-          <div className="mt-4 sm:mt-0 font-mono text-[11px] text-white/40">
-            ETHOS · CORE PRINCIPLES
           </div>
         </div>
 

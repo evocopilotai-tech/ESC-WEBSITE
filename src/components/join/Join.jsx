@@ -90,7 +90,6 @@ export const Join = () => {
                   <span className="w-2 h-2 rounded-full bg-[#EE4326]" />
                   <span>COMMUNITY ADMISSIONS PIPELINE</span>
                 </div>
-                <span>TERM-2026</span>
               </div>
 
               {/* Minimal Code & Activity Matrix */}
@@ -112,12 +111,6 @@ export const Join = () => {
                   <div className="text-white font-semibold text-xs">Deploy With Chapter Squads</div>
                   <div className="text-[11px] text-white/60 mt-0.5">Immediate access to workshops, compute & repositories.</div>
                 </div>
-              </div>
-
-              {/* Bottom Telemetry Bar */}
-              <div className="mt-5 pt-3 border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-white/50">
-                <span>CAMPUS: PUNE</span>
-                <span className="text-[#EE4326] font-semibold">AUTONOMOUS CHAPTER</span>
               </div>
             </div>
           </div>

@@ -20,10 +20,7 @@ export const Experiences = () => {
             <span className="font-editorial-serif text-5xl sm:text-6xl text-white font-normal leading-none select-none">
               03
             </span>
-            <div className="flex flex-col">
-              <span className="font-mono text-[11px] uppercase tracking-widest text-[#EE4326] font-semibold">
-                EXPERIENCES · STUDENT MANIFESTO
-              </span>
+            <div className="flex flex-col justify-center">
               <span className="text-xs text-white/50 tracking-wider uppercase font-medium">
                 Student-First Engineering
               </span>
