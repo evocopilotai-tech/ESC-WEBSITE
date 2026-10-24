@@ -32,7 +32,6 @@ export const CORE_MEMBERS = [
     roleTag: 'CAMPUS PRESIDENT',
     name: 'Yashi Gupta',
     isPlaceholder: false,
-    department: 'BV(DU)COEP Pune · Class of 2028',
     bio: 'Directing chapter vision, institutional alignment, and cross-disciplinary technical initiatives across the chapter.',
     image: yashiImg,
     socials: {
@@ -51,7 +50,6 @@ export const CORE_MEMBERS = [
     roleTag: 'VICE PRESIDENT',
     name: 'Abhi Chaudhary',
     isPlaceholder: false,
-    department: 'BV(DU)COEP Pune · Class of 2028',
     bio: 'Overseeing chapter operations, inter-departmental synergies, and strategic partnerships for student developers.',
     image: abhiImg,
     socials: {
@@ -70,7 +68,6 @@ export const CORE_MEMBERS = [
     roleTag: 'TECH HEAD',
     name: 'Kushagra Dayal Srivastava',
     isPlaceholder: false,
-    department: 'BV(DU)COEP Pune · Class of 2028',
     bio: 'Spearheading hands-on code labs, AI agent architectures, and developer hackathon projects for members.',
     image: kushagraImg,
     socials: {
@@ -89,7 +86,6 @@ export const CORE_MEMBERS = [
     roleTag: 'EVENTS HEAD',
     name: 'Tushita Baghel',
     isPlaceholder: false,
-    department: 'BV(DU)COEP Pune · Class of 2028',
     bio: 'Curating technical symposiums, hackathons, and immersive campus buildathon experiences.',
     image: tushitaImg,
     socials: {
@@ -108,7 +104,6 @@ export const CORE_MEMBERS = [
     roleTag: 'DESIGN HEAD',
     name: 'Shashwat Koul',
     isPlaceholder: false,
-    department: 'BV(DU)COEP Pune · Class of 2028',
     bio: 'Crafting brand visual languages, design systems, editorial aesthetics, and interactive user experiences.',
     image: shashwatImg,
     socials: {
@@ -127,7 +122,6 @@ export const CORE_MEMBERS = [
     roleTag: 'PUBLIC RELATION HEAD',
     name: 'Ayush Deore',
     isPlaceholder: false,
-    department: 'BV(DU)COEP Pune · Class of 2028',
     bio: 'Leading external relations, student outreach, and institutional communications for EvoCopilot.',
     image: ayushImg,
     socials: {
@@ -146,10 +140,9 @@ export const CORE_MEMBERS = [
     roleTag: 'SOCIAL MEDIA',
     name: 'Anushka',
     isPlaceholder: false,
-    department: 'BV(DU)COEP Pune · Class of 2028',
     bio: 'Driving chapter storytelling, digital awareness, and engagement campaigns across developer channels.',
     image: anushkaImg,
-    objectPosition: 'center 60%', // face is in lower half of photo
+    objectPosition: 'center 60%',
     socials: {
       linkedin: 'https://www.linkedin.com/in/anushka-987995324',
       github: null,
@@ -166,7 +159,6 @@ export const CORE_MEMBERS = [
     roleTag: 'MARKETING HEAD',
     name: 'Ashmit Vyawhare',
     isPlaceholder: false,
-    department: 'BV(DU)COEP Pune · Class of 2028',
     bio: 'Strategizing chapter growth, campaign dissemination, and community branding initiatives.',
     image: ashmitImg,
     socials: {

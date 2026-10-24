@@ -29,7 +29,7 @@ export const Team = () => {
             </span>
             <div className="flex flex-col">
               <span className="font-mono text-[11px] uppercase tracking-widest text-[#EE4326] font-semibold">
-                CHAPTER LEADERSHIP // COUNCIL
+                CHAPTER LEADERSHIP · COUNCIL
               </span>
               <span className="text-xs text-white/50 tracking-wider uppercase font-medium">
                 Student Core Team · BV(DU)COEP Pune
@@ -38,11 +38,10 @@ export const Team = () => {
           </div>
 
           <div className="mt-4 sm:mt-0 font-mono text-[11px] text-white/40 tracking-widest uppercase">
-            TERM // 2026–2027
+            TERM · 2026–2027
           </div>
         </div>
 
-        {/* Section Headline */}
         <div className="max-w-3xl mb-16 sm:mb-20">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-editorial-serif font-normal text-white leading-[1.15] mb-4">
             Student leadership<br />
@@ -53,15 +52,11 @@ export const Team = () => {
           </p>
         </div>
 
-        {/* ========================================================= */}
-        {/* STUDENT LEADERSHIP & CORE TEAM DIRECTORY                  */}
-        {/* ========================================================= */}
         <div>
-          {/* Subheader */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between pb-6 mb-8 border-b border-white/10">
             <div>
               <span className="font-mono text-xs uppercase tracking-wider text-[#EE4326] font-semibold block mb-1">
-                // STUDENT LEADERSHIP DIRECTORY & DIRECT CONNECT
+                STUDENT LEADERSHIP DIRECTORY & DIRECT CONNECT
               </span>
               <h3 className="text-2xl sm:text-3xl font-editorial-serif text-white font-normal">
                 Core Team & Department Heads

@@ -27,53 +27,38 @@ export function TailwindImageAccordion({ items = [], className = "" }) {
         return (
           <article
             key={item?.id || item?.name || i}
-            className="group/article relative w-full md:not-[&:hover]:group-hover:w-[12%] md:[&:not(:focus-within):not(:hover)]:group-focus-within:w-[12%] transition-all duration-500 ease-[cubic-bezier(.5,.85,.25,1.15)] rounded-2xl overflow-hidden border border-white/10 hover:border-[#EE4326]/60 bg-[#121212] shadow-[0_10px_30px_rgba(0,0,0,0.6)] before:absolute before:inset-x-0 before:bottom-0 before:h-3/4 before:bg-gradient-to-t before:from-black/98 before:via-black/70 before:to-transparent before:z-10 focus-within:ring-2 focus-within:ring-[#EE4326]"
+            className="group/article relative w-full md:not-[&:hover]:group-hover:w-[12%] md:[&:not(:focus-within):not(:hover)]:group-focus-within:w-[12%] transition-all duration-500 ease-[cubic-bezier(.5,.85,.25,1.15)] rounded-2xl overflow-hidden border border-white/10 hover:border-[#EE4326]/60 bg-[#121212] shadow-[0_10px_30px_rgba(0,0,0,0.6)] before:absolute before:inset-x-0 before:bottom-0 before:h-1/3 before:bg-gradient-to-t before:from-black/98 before:via-black/70 before:to-transparent before:z-10 focus-within:ring-2 focus-within:ring-[#EE4326]"
           >
             {/* Portrait — objectPosition is per-member to crop to face */}
             <img
-              className="object-cover h-64 sm:h-80 md:h-[400px] lg:h-[480px] w-full transition-transform duration-700 ease-out group-hover/article:scale-105"
-              style={{ objectPosition: item?.objectPosition || 'center 35%' }}
+              className="object-cover h-72 sm:h-88 md:h-[420px] lg:h-[500px] w-full transition-transform duration-700 ease-out group-hover/article:scale-105"
+              style={{ objectPosition: item?.objectPosition || 'center 25%' }}
               src={item?.image || item?.url}
               alt={item?.name || item?.title || "Team member portrait"}
               loading="lazy"
             />
 
-            {/* Text overlay */}
-            <div className="absolute inset-0 z-20 p-4 sm:p-5 flex flex-col justify-end pointer-events-none">
-              {/* Bottom detail container — always visible */}
+            {/* Text overlay — subtle scrim only at the very bottom so face remains completely unobstructed */}
+            <div className="absolute inset-x-0 bottom-0 z-20 p-4 sm:p-5 flex flex-col justify-end pointer-events-none bg-gradient-to-t from-black/95 via-black/75 to-transparent pt-12">
               <div className="flex flex-col gap-1">
-                {/* Role — orange mono tag, shown once at bottom */}
+                {/* Role — orange mono tag */}
                 <span className="text-[10px] font-mono tracking-widest text-[#EE4326] font-semibold uppercase">
                   {item?.role || item?.description}
                 </span>
 
                 {/* Name */}
-                <h3 className="text-xl sm:text-2xl font-bold text-white leading-tight">
+                <h3 className="text-lg sm:text-xl font-bold text-white leading-tight">
                   {item?.name || item?.title}
                 </h3>
 
-                {/* Department */}
-                {item?.department && (
-                  <span className="text-[11px] text-white/60 font-mono">
-                    {item?.department}
-                  </span>
-                )}
-
-                {/* Bio — only on sm+ so mobile stays clean */}
-                {item?.bio && (
-                  <p className="text-xs text-white/70 mt-1 line-clamp-2 hidden sm:block md:opacity-0 group-hover/article:opacity-100 transition duration-300">
-                    {item?.bio}
-                  </p>
-                )}
-
-                {/* LinkedIn — always tappable */}
+                {/* LinkedIn button */}
                 {hasExternalLink && (
                   <div className="mt-2 pointer-events-auto">
                     <a
                       href={link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#EE4326] active:bg-[#c0321b] text-white text-xs font-mono font-medium shadow-md"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#EE4326] hover:bg-[#d93829] active:bg-[#c0321b] text-white text-xs font-mono font-medium shadow-md transition-colors"
                       aria-label={`Connect with ${item?.name || item?.title} on LinkedIn`}
                     >
                       <LinkedInIcon className="w-3.5 h-3.5" />

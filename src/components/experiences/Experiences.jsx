@@ -8,6 +8,7 @@ import {
   FlaskConical,
   ArrowUpRight,
 } from 'lucide-react';
+import ScrollAnimation from '../ui/you-can-scroll';
 
 export const Experiences = () => {
 
@@ -67,14 +68,11 @@ export const Experiences = () => {
       id="experiences"
       className="relative pt-16 sm:pt-24 pb-16 sm:pb-24 bg-[#0A0A0A] text-[#FCFBF8] border-b border-white/10"
     >
-      {/* Editorial Vertical Architectural Guide Lines */}
       <div className="absolute inset-0 pointer-events-none opacity-40">
         <div className="h-full w-full max-w-7xl mx-auto border-x border-white/5" />
       </div>
 
-      {/* ── Inner content — constrained width ──────────────── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
         <div className="exp-header flex flex-col sm:flex-row sm:items-end justify-between pb-8 mb-16 sm:mb-24 border-b border-white/10">
           <div className="flex items-center gap-4">
             <span className="font-editorial-serif text-5xl sm:text-6xl text-white font-normal leading-none select-none">
@@ -82,7 +80,7 @@ export const Experiences = () => {
             </span>
             <div className="flex flex-col">
               <span className="font-mono text-[11px] uppercase tracking-widest text-[#EE4326] font-semibold">
-                WHAT WE DO // ACTIVITY ROADMAP
+                WHAT WE DO · ACTIVITY ROADMAP
               </span>
               <span className="text-xs text-white/50 tracking-wider uppercase font-medium">
                 Six Areas of Focus · BV(DU)COEP Pune
@@ -91,11 +89,10 @@ export const Experiences = () => {
           </div>
 
           <div className="mt-4 sm:mt-0 font-mono text-[11px] text-white/40">
-            ROADMAP // TERM 2026-2027
+            ROADMAP · TERM 2026-2027
           </div>
         </div>
 
-        {/* Section Headline */}
         <div className="max-w-3xl mb-16 sm:mb-20">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-editorial-serif font-normal text-white leading-[1.15] mb-4">
             Structured for deep inquiry.<br />
@@ -106,7 +103,6 @@ export const Experiences = () => {
           </p>
         </div>
 
-        {/* Activity Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           {activities.map((act) => {
             const Icon = act.icon;
@@ -116,17 +112,15 @@ export const Experiences = () => {
                 className="activity-item bg-[#121212] border border-white/10 hover:border-[#EE4326]/60 p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:shadow-[0_8px_30px_rgba(238,67,38,0.12)] group"
               >
                 <div>
-                  {/* Top Bar */}
                   <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-5">
                     <span className="font-mono text-sm text-[#EE4326] font-semibold">
-                      // {act.num}
+                      {act.num}
                     </span>
                     <span className="font-mono text-[10px] uppercase tracking-wider text-white/60 px-2 py-0.5 bg-[#1C1C1C] border border-white/10 rounded-xs">
                       {act.tag}
                     </span>
                   </div>
 
-                  {/* Icon & Title */}
                   <div className="flex items-start gap-3.5 mb-3">
                     <div className="p-2 bg-[#1A1A1A] border border-white/10 rounded-xs text-white group-hover:text-[#EE4326] group-hover:border-[#EE4326]/40 transition-colors shrink-0">
                       <Icon className="w-4 h-4" />
@@ -141,13 +135,11 @@ export const Experiences = () => {
                     </div>
                   </div>
 
-                  {/* Description */}
                   <p className="text-xs sm:text-sm text-white/70 leading-relaxed pt-2">
                     {act.desc}
                   </p>
                 </div>
 
-                {/* Bottom Hairline */}
                 <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-white/40">
                   <span>BV(DU)COEP CAMPUS LABS</span>
                   <span className="text-white/80 flex items-center gap-1 group-hover:text-[#EE4326] transition-colors font-medium">
@@ -159,6 +151,10 @@ export const Experiences = () => {
             );
           })}
         </div>
+      </div>
+
+      <div className="mt-16 sm:mt-24 border-t border-white/10 relative z-10">
+        <ScrollAnimation />
       </div>
     </section>
   );
