@@ -1,5 +1,5 @@
 /**
- * EvoCopilot Student Chapter (BV(DU)COEP Pune) — Design Tokens
+ * EvoCopilot Student Chapter — Design Tokens
  * Editorial Technology Design System
  */
 

@@ -1,11 +1,11 @@
 /**
  * Central Chapter Configuration & Destination Links
- * All links and contact details for EvoCopilot Student Chapter (BV(DU)COEP Pune).
+ * All links and contact details for EvoCopilot Student Chapter.
  */
 
 export const CHAPTER_CONFIG = {
   name: 'EvoCopilot Student Chapter',
-  shortName: 'EvoCopilot BV(DU)COEP',
+  shortName: 'EvoCopilot',
   institution: 'Bharati Vidyapeeth College of Engineering, Pune',
   parentUniversity: 'Bharati Vidyapeeth Deemed University / SPPU Approved',
   campusLocation: 'Katraj-Dhankawadi, Pune, Maharashtra 411043, India',
@@ -22,7 +22,7 @@ export const CHAPTER_CONFIG = {
 
   // Official Channels
   socials: {
-    github: 'https://github.com/evocopilot-BV(DU)COEP',
+    github: 'https://github.com/evocopilot',
     linkedin: 'https://www.linkedin.com/company/evocopilot-student-chapter-bvdu-coep/',
     instagram: 'https://www.instagram.com/esc_bvpcoep?dlrf=NDM4cDl3OW83OW13',
     whatsapp: 'https://chat.whatsapp.com/LyPvqlTDMzsLkdMp7GUGQK?s=cl&p=a&mlu=4&ilr=4',

@@ -148,8 +148,8 @@ export const ComputationalOrbital = ({ mousePos = { x: 0, y: 0 } }) => {
       // Telemetry Coordinates readout (adjusted to prevent overlapping corner brackets)
       ctx.font = '10px ui-monospace, monospace';
       ctx.fillStyle = '#8E8A82';
-      ctx.fillText('COORD // 18°27\'27"N 73°51\'02"E', centerX - 85, centerY + 175);
-      ctx.fillText('BV(DU)COEP // PUNE LABS', centerX - 55, centerY - 170);
+      ctx.fillText('COORD · 18°27\'27"N 73°51\'02"E', centerX - 85, centerY + 175);
+      ctx.fillText('CAMPUS · PUNE LABS', centerX - 55, centerY - 170);
 
       animationFrameId = requestAnimationFrame(render);
     };

@@ -1,0 +1,161 @@
+/* Second Draft Text Styles - Theme dark / website theme matched */
+.sd {
+  position: relative;
+  width: 100%;
+  font-family: inherit;
+}
+
+.sd__kicker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sd__draft {
+  color: #EE4326;
+  font-weight: 600;
+}
+
+.sd__line {
+  font-family: var(--font-editorial-serif, "Playfair Display", Georgia, serif);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: #FCFBF8;
+  margin: 0;
+  min-height: 2.6em;
+}
+
+.sd__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sd__sel {
+  background: rgba(238, 67, 38, 0.35);
+  color: #FCFBF8;
+  border-radius: 2px;
+}
+
+.sd__struck {
+  position: relative;
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0 0.1em;
+}
+
+.sd__struck svg {
+  position: absolute;
+  left: -5%;
+  top: 48%;
+  width: 110%;
+  height: 14px;
+  pointer-events: none;
+  stroke: #EE4326;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  fill: none;
+}
+
+.sd__final {
+  position: relative;
+  display: inline-block;
+  font-style: italic;
+  color: #FCFBF8;
+  background: linear-gradient(135deg, #FCFBF8 0%, #EE4326 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 0 0.05em;
+}
+
+.sd__final svg {
+  position: absolute;
+  left: 0;
+  bottom: -0.35em;
+  width: 100%;
+  height: 22px;
+  pointer-events: none;
+  stroke: #EE4326;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.sd__caret {
+  display: inline-block;
+  width: 2px;
+  height: 0.9em;
+  vertical-align: -0.08em;
+  margin-left: 2px;
+  background: #EE4326;
+  animation: sd-blink 1s steps(2, start) infinite;
+}
+
+.sd__caret[data-typing] {
+  animation: none;
+  opacity: 1;
+}
+
+.sd__caret[data-done] {
+  display: none;
+}
+
+@keyframes sd-blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+.sd__replay {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding: 0.5rem 1rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sd__replay:hover:not(:disabled) {
+  color: #FCFBF8;
+  background: rgba(238, 67, 38, 0.15);
+  border-color: rgba(238, 67, 38, 0.4);
+}
+
+.sd__replay:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.sd__replay svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  fill: none;
+}

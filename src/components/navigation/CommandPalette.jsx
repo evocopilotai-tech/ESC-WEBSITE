@@ -18,7 +18,7 @@ const COMMAND_ITEMS = [
     items: [
       { id: 'doc-charter', label: 'Chapter Constitution & Bylaws', icon: FileText, href: '#charter', tag: 'Bylaws' },
       { id: 'doc-membership', label: 'Membership Application Form', icon: ArrowRight, href: '#membership', tag: 'Apply' },
-      { id: 'doc-BV(DU)COEP', label: 'BV(DU)COEP Pune Engineering Portal', icon: ArrowRight, href: 'https://bvdudetch.bharatividyapeeth.edu', tag: 'Campus' },
+      { id: 'doc-campus', label: 'College Engineering Portal', icon: ArrowRight, href: 'https://bvdudetch.bharatividyapeeth.edu', tag: 'Campus' },
     ],
   },
 ];

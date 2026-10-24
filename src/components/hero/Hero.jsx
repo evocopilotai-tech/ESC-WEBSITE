@@ -47,26 +47,23 @@ export const Hero = () => (
           </p>
         </motion.div>
 
-        {/* Main headline — positioned cleanly below the studio light beams without overlap */}
+        {/* Main headline — refined scale preserving signature 4-line typography layout */}
         <motion.h1
           variants={item}
-          className="max-w-5xl text-4xl sm:text-5xl md:text-6xl lg:text-[76px] xl:text-[88px]
-                     leading-[1.0] tracking-tight font-bold uppercase mb-6
+          className="max-w-4xl text-3xl sm:text-4xl md:text-5xl lg:text-[60px] xl:text-[68px]
+                     leading-[1.05] tracking-tight font-bold uppercase mb-6
                      text-transparent bg-clip-text
                      bg-gradient-to-b from-white via-white/90 to-white/40
                      drop-shadow-[0_2px_40px_rgba(255,255,255,0.12)]"
         >
-          {/* "IDEAS INTO" */}
-          <span className="block">Ideas into</span>
-          {/* "INTELLIGENCE" */}
+          <span className="block">Curiosity into</span>
           <span className="block font-serif font-normal italic lowercase tracking-normal
                            text-white
                            my-1">
-            intelligence.
+            code.
           </span>
-          {/* "INTELLIGENCE INTO IMPACT" */}
-          <span className="block text-white/95">Intelligence</span>
-          <span className="block text-white/70">into impact.</span>
+          <span className="block text-white/95">Software that</span>
+          <span className="block text-white/70">matters.</span>
         </motion.h1>
 
         {/* Sub-copy */}
@@ -81,7 +78,7 @@ export const Hero = () => (
         {/* CTA buttons */}
         <motion.div
           variants={item}
-          className="flex flex-col sm:flex-row gap-4 pointer-events-auto mb-10"
+          className="flex flex-col sm:flex-row gap-4 pointer-events-auto"
         >
           <MagneticButton
             href="#about"
@@ -111,43 +108,6 @@ export const Hero = () => (
             <ArrowUpRight className="w-4 h-4 text-white" />
           </MagneticButton>
         </motion.div>
-
-        {/* Meta row */}
-        <motion.div
-          variants={item}
-          className="flex flex-wrap items-center justify-center gap-4 text-[10px]
-                     font-mono text-white/40 tracking-widest uppercase"
-        >
-          <span><span className="text-white/70 font-semibold">Campus:</span> Katraj-Dhankawadi, Pune</span>
-          <span className="hidden sm:block text-white/20">|</span>
-          <span><span className="text-white/70 font-semibold">Focus:</span> Applied AI · Dev Intelligence</span>
-          <span className="hidden sm:block text-white/20">|</span>
-          <span><span className="text-white/70 font-semibold">Term:</span> 2026–2027 Active</span>
-        </motion.div>
-
-        {/* Scroll cue */}
-        <motion.div
-          variants={item}
-          className="mt-8 pointer-events-auto"
-        >
-          <a
-            href="#about"
-            className="inline-flex flex-col items-center gap-2 text-[10px] font-mono
-                       uppercase tracking-wider text-white/40 hover:text-white
-                       transition-colors group"
-          >
-            <motion.div
-              animate={{ y: [0, 5, 0] }}
-              transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-              className="p-1 border border-white/20 rounded-sm
-                         group-hover:border-white/60 transition-colors"
-            >
-              <ArrowDown className="w-3.5 h-3.5 text-white" />
-            </motion.div>
-            <span>Scroll to explore</span>
-          </a>
-        </motion.div>
-
       </motion.div>
     </VolumetricStudio>
   </section>

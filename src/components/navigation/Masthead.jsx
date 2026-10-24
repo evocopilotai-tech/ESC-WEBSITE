@@ -8,7 +8,7 @@ export const Masthead = () => {
         {/* Left: Academic Affiliation */}
         <div className="flex items-center gap-2 truncate">
           <span className="font-semibold text-[#202020] uppercase tracking-wider text-[10px] px-1.5 py-0.5 bg-[#EFECE5] rounded-xs border border-[#E9E5DF]">
-            BV(DU)COEP
+            CAMPUS
           </span>
           <span className="truncate">Bharati Vidyapeeth College of Engineering, Pune</span>
           <span className="hidden md:inline text-[#DCD7CE]">/</span>

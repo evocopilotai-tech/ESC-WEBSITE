@@ -32,7 +32,7 @@ export const Team = () => {
                 CHAPTER LEADERSHIP · COUNCIL
               </span>
               <span className="text-xs text-white/50 tracking-wider uppercase font-medium">
-                Student Core Team · BV(DU)COEP Pune
+                Student Core Team
               </span>
             </div>
           </div>
@@ -48,7 +48,7 @@ export const Team = () => {
             <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-[#EE4326] via-[#F48A25] to-[#EE4326]">shaping</span> our engineering direction.
           </h2>
           <p className="text-sm sm:text-base text-white/70 leading-relaxed">
-            The EvoCopilot Student Chapter at Bharati Vidyapeeth College of Engineering, Pune is steered by an energetic council of student leads driving technical sessions, design systems, and campus hackathons.
+            The EvoCopilot Student Chapter is steered by an energetic council of student leads driving technical sessions, design systems, and campus hackathons.
           </p>
         </div>
 
@@ -61,10 +61,6 @@ export const Team = () => {
               <h3 className="text-2xl sm:text-3xl font-editorial-serif text-white font-normal">
                 Core Team & Department Heads
               </h3>
-            </div>
-
-            <div className="mt-4 sm:mt-0 text-xs font-mono text-white/50">
-              {filteredMembers.length} MEMBERS IN VIEW
             </div>
           </div>
 

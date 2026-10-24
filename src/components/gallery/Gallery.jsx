@@ -30,17 +30,12 @@ export const Gallery = () => {
             </span>
             <div className="flex flex-col">
               <span className="font-mono text-[11px] uppercase tracking-widest text-[#EE4326] font-semibold">
-                CHAPTER VISUAL ARCHIVE // 3D RECORD
+                CHAPTER VISUAL ARCHIVE · 3D RECORD
               </span>
               <span className="text-xs text-white/60 tracking-wider uppercase font-medium">
-                BV(DU)COEP Pune · 21 High-Resolution Historical Records
+                21 High-Resolution Historical Records
               </span>
             </div>
-          </div>
-
-          <div className="mt-4 sm:mt-0 font-mono text-[11px] text-white/50 flex items-center gap-3">
-            <span className="inline-block w-2 h-2 rounded-full bg-[#EE4326] animate-pulse" />
-            <span>INTERACTIVE WHEEL // DRAG TO TURN</span>
           </div>
         </div>
 

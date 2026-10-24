@@ -61,7 +61,7 @@ export const Motive = () => {
             </span>
             <div className="flex flex-col">
               <span className="font-mono text-[11px] uppercase tracking-widest text-[#EE4326] font-semibold">
-                OUR MOTIVE // GUIDING ETHOS
+                OUR MOTIVE · GUIDING ETHOS
               </span>
               <span className="text-xs text-white/50 tracking-wider uppercase font-medium">
                 Four Pillars of the Student Chapter
@@ -70,7 +70,7 @@ export const Motive = () => {
           </div>
 
           <div className="mt-4 sm:mt-0 font-mono text-[11px] text-white/40">
-            ETHOS // CORE PRINCIPLES
+            ETHOS · CORE PRINCIPLES
           </div>
         </div>
 
@@ -92,7 +92,7 @@ export const Motive = () => {
               </h3>
 
               <p className="text-sm sm:text-base text-white/70 leading-relaxed">
-                Passive tutorials do not forge engineers. At EvoCopilot BV(DU)COEP Pune, deep understanding is born when compilers throw errors, tests fail, and algorithms are debugged at 1 AM. We prioritize working prototypes and reproducible codebases over superficial certifications.
+                Passive tutorials do not forge engineers. At EvoCopilot, deep understanding is born when compilers throw errors, tests fail, and algorithms are debugged at 1 AM. We prioritize working prototypes and reproducible codebases over superficial certifications.
               </p>
 
               <div className="flex items-center gap-4 pt-2 text-xs font-mono text-white/80">
@@ -120,14 +120,14 @@ export const Motive = () => {
                     <span className="w-2.5 h-2.5 rounded-full bg-[#F48A25]" />
                     <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
                   </div>
-                  <span>esc-dev // terminal</span>
+                  <span>esc-dev · terminal</span>
                 </div>
                 <div className="space-y-1.5 text-[11px]">
                   <p className="text-white/40">$ git clone chapter/autonomous-evals</p>
                   <p className="text-[#F48A25]">&#10140; compiling agent orchestration pipeline...</p>
                   <p className="text-white/80">[INFO] Initializing token context (32k window)</p>
                   <p className="text-[#EE4326] font-medium">&#10003; 14 test suites passed in 1.42s</p>
-                  <p className="text-white/40">$ ./deploy --target BV(DU)COEP-cluster</p>
+                  <p className="text-white/40">$ ./deploy --target cluster</p>
                   <p className="text-white flex items-center gap-1">
                     <span className="animate-pulse text-[#EE4326]">&#9646;</span>
                     <span className="text-white/50">ready for live campus inference</span>
@@ -161,15 +161,15 @@ export const Motive = () => {
 
               <div className="pt-4 grid grid-cols-2 sm:grid-cols-3 gap-3 font-mono text-[11px]">
                 <div className="p-3 bg-[#141414] border border-white/10">
-                  <div className="text-[#EE4326] font-semibold">// 01</div>
+                  <div className="text-[#EE4326] font-semibold">01</div>
                   <div className="text-white font-medium mt-1">Agent Workflows</div>
                 </div>
                 <div className="p-3 bg-[#141414] border border-white/10">
-                  <div className="text-[#EE4326] font-semibold">// 02</div>
+                  <div className="text-[#EE4326] font-semibold">02</div>
                   <div className="text-white font-medium mt-1">Vector Indices</div>
                 </div>
                 <div className="p-3 bg-[#141414] border border-white/10">
-                  <div className="text-[#EE4326] font-semibold">// 03</div>
+                  <div className="text-[#EE4326] font-semibold">03</div>
                   <div className="text-white font-medium mt-1">Evals & Metrics</div>
                 </div>
               </div>
@@ -178,7 +178,7 @@ export const Motive = () => {
             {/* Geometric Vector Topology Micro-Card */}
             <div className="lg:col-span-5 bg-[#141414] border border-white/10 p-6 space-y-4">
               <div className="flex items-center justify-between text-[11px] font-mono text-white/50 border-b border-white/10 pb-2">
-                <span>TENSOR MATRIX // EMBEDDING</span>
+                <span>TENSOR MATRIX · EMBEDDING</span>
                 <span className="text-[#EE4326] font-semibold">DIM: 1536</span>
               </div>
               <p className="text-xs text-white/70 leading-relaxed">
@@ -197,8 +197,8 @@ export const Motive = () => {
             {/* Visual Column on Left */}
             <div className="lg:col-span-5 order-2 lg:order-1 bg-[#141414] border border-white/10 p-6 space-y-4">
               <div className="flex items-center justify-between text-[11px] font-mono text-white/50 border-b border-white/10 pb-2">
-                <span>OPEN FORUM // NO GATEKEEPING</span>
-                <span className="text-white">BV(DU)COEP PEERS</span>
+                <span>OPEN FORUM · NO GATEKEEPING</span>
+                <span className="text-white">CAMPUS PEERS</span>
               </div>
               <div className="space-y-2">
                 <div className="p-3 bg-[#1A1A1A] border border-white/10 text-xs">
@@ -258,7 +258,7 @@ export const Motive = () => {
               </h3>
 
               <p className="text-base sm:text-lg text-white/70 leading-relaxed font-normal">
-                Engineering student projects should not die on a slide deck. We orient our efforts toward software that gets deployed, evaluated by real users, and released as open source. We aim to contribute meaningfully to Pune’s burgeoning technical ecosystem and establish BV(DU)COEP as an epicenter for student-built innovation.
+                Engineering student projects should not die on a slide deck. We orient our efforts toward software that gets deployed, evaluated by real users, and released as open source. We aim to contribute meaningfully to Pune’s burgeoning technical ecosystem and establish our campus as an epicenter for student-built innovation.
               </p>
             </div>
           </div>

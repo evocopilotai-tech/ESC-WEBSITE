@@ -262,7 +262,7 @@ export function WorksWheel({
                 {/* Badge caption on card */}
                 <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
                   <span className="text-[11px] font-mono uppercase text-white/90 truncate pr-2">
-                    {item.tag || `Archive // 0${i + 1}`}
+                    {item.tag ? String(item.tag).replace(' // ', ' · ') : `Archive 0${i + 1}`}
                   </span>
                   {action && (
                     <span className="bg-[#EE4326] text-white font-mono text-[10px] tracking-wider uppercase px-2 py-0.5 rounded-full flex items-center gap-1 shadow-sm">
@@ -296,9 +296,6 @@ export function WorksWheel({
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#EE4326] via-[#F48A25] to-[#EE4326] font-editorial-serif">
             {label}
           </span>
-          <span className="text-xs font-mono text-white/40 uppercase tracking-widest mt-2">
-            Scroll or drag wheel to browse
-          </span>
         </div>
       </div>
 
@@ -308,7 +305,7 @@ export function WorksWheel({
         style={{ fontSize: Math.max(metrics.title * 0.65, 20) }}
       >
         <span className="font-mono text-xs text-[#EE4326] uppercase tracking-widest block mb-2 font-semibold">
-          {items[active]?.tag || `Archive Frame // 0${active + 1}`}
+          {items[active]?.tag ? String(items[active]?.tag).replace(' // ', ' · ') : `Archive Frame 0${active + 1}`}
         </span>
         <h3 className="font-editorial-serif font-normal text-white leading-tight">
           {items[active]?.title}

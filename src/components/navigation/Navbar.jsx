@@ -55,9 +55,9 @@ export const Navbar = () => {
             <a
               href="#"
               className="flex items-center focus:outline-none focus-visible:ring-1 focus-visible:ring-white rounded-xs"
-              aria-label="EvoCopilot Student Chapter BV(DU)COEP Pune"
+              aria-label="EvoCopilot Student Chapter"
             >
-              <Logo variant="compact" size="md" subtitle="Student Chapter · BV(DU)COEP" dark={true} />
+              <Logo variant="compact" size="md" inline={true} subtitle="Student Chapter" dark={true} />
             </a>
 
             {/* Desktop links */}

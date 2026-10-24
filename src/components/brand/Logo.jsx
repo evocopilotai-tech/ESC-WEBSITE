@@ -11,6 +11,7 @@ export const Logo = ({
   size = 'md',
   subtitle = 'Student Chapter',
   dark = false,
+  inline = false,
   className = '',
 }) => {
   const sizeMap = {
@@ -59,19 +60,31 @@ export const Logo = ({
         />
       </div>
 
-      <div className="flex flex-col text-left leading-none justify-center">
-        <div className="flex items-center gap-1.5">
+      {inline ? (
+        <div className="flex items-center gap-2 text-left leading-none">
           <span className={`font-semibold tracking-tight font-editorial-sans ${currentSize.title} text-white`}>
             EvoCopilot
           </span>
+          <span className="font-normal text-white/80 tracking-tight font-editorial-sans text-sm sm:text-base">
+            Student Chapter
+          </span>
           <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#EE4326]" />
         </div>
-        {subtitle && (
-          <span className={`tracking-wider uppercase font-medium mt-1 font-mono ${currentSize.sub} ${dark ? 'text-[#A8A49C]' : 'text-[#8E8A82]'}`}>
-            {subtitle}
-          </span>
-        )}
-      </div>
+      ) : (
+        <div className="flex flex-col text-left leading-none justify-center">
+          <div className="flex items-center gap-1.5">
+            <span className={`font-semibold tracking-tight font-editorial-sans ${currentSize.title} text-white`}>
+              EvoCopilot
+            </span>
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#EE4326]" />
+          </div>
+          {subtitle && (
+            <span className={`tracking-wider uppercase font-medium mt-1 font-mono ${currentSize.sub} ${dark ? 'text-[#A8A49C]' : 'text-[#8E8A82]'}`}>
+              {subtitle}
+            </span>
+          )}
+        </div>
+      )}
     </div>
   );
 };

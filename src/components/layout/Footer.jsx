@@ -17,7 +17,7 @@ export const Footer = () => {
   const socialLinks = [
     {
       caption: "Follow chapter stories",
-      label: "Instagram @esc_BV(DU)COEPp",
+      label: "Instagram",
       href: CHAPTER_CONFIG.socials.instagram,
     },
     {
@@ -35,7 +35,7 @@ export const Footer = () => {
   return (
     <footer id="footer" className="w-full bg-[#111111] text-[#FCFBF8]">
       <StarburstThanksFooter
-        name="EvoCopilot BV(DU)COEP"
+        name="EvoCopilot"
         thanks={thanksWords}
         tagline="for exploring with us"
         signoff="Ideas into intelligence. Intelligence into impact."
@@ -52,7 +52,7 @@ export const Footer = () => {
             <Logo
               variant="compact"
               size="md"
-              subtitle="Student Chapter · BV(DU)COEP Pune"
+              subtitle="Student Chapter"
               dark={true}
             />
           </div>

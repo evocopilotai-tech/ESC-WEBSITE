@@ -71,7 +71,7 @@ const D_FEATURES = {
   },
   insights: {
     title: "AI Benchmark Velocity",
-    description: "Tracking student model iterations, inference latency gains, and active hackathon development milestones across BV(DU)COEP Pune.",
+    description: "Tracking student model iterations, inference latency gains, and active hackathon development milestones across campus squads.",
     values: [24, 28, 26, 34, 32, 40, 38, 48, 46, 55, 62, 70],
     forecastFrom: 8,
   },

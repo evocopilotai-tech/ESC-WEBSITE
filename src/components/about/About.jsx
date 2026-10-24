@@ -6,8 +6,8 @@ export const About = () => {
     <section id="about" className="relative w-full bg-[#0E0E0E] border-b border-white/10">
       <InkOrbitFeatures
         theme="dark"
-        brand="EvoCopilot BV(DU)COEP"
-        tag="ABOUT THE CHAPTER // 01"
+        brand="EvoCopilot"
+        tag="ABOUT THE CHAPTER · 01"
         title="Where Curious Minds *Ship*.\nFrom Prototype to Production SaaS."
         collaboration={{
           title: "SaaS Product Development & Core Engineering",

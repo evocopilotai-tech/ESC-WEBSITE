@@ -1,5 +1,5 @@
 /**
- * Central Team Dataset for EvoCopilot Student Chapter (BV(DU)COEP Pune)
+ * Central Team Dataset for EvoCopilot Student Chapter
  * Term: 2026–2027
  * High-Resolution Native Portrait Assets
  */

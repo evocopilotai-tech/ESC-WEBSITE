@@ -140,7 +140,7 @@ export const dust = (n, seed = 0) =>
 const DEFAULT_THANKS = ["Thank you", "Dhanyavad", "Shukran", "Gracias", "Merci", "Danke", "Arigato"];
 
 const DEFAULT_LINKS = [
-  { caption: "Follow Chapter Stories", label: "Instagram @esc_BV(DU)COEPp", href: "https://www.instagram.com/esc_BV(DU)COEPp?cplk=NDM4cDl3OW83OW13" },
+  { caption: "Follow Chapter Stories", label: "Instagram", href: "https://www.instagram.com/esc_bvpcoep?dlrf=NDM4cDl3OW83OW13" },
   { caption: "Connect with Network", label: "LinkedIn Company", href: "https://www.linkedin.com/company/evocopilot-student-chapter-bvdu-coep/" },
   { caption: "Join Student Discussions", label: "Community WhatsApp", href: "https://chat.whatsapp.com/LyPvqlTDMzsLkdMp7GUGQK?s=cl&p=a&mlu=4&ilr=4" },
 ];
@@ -339,13 +339,13 @@ function Sep() {
 }
 
 export default function StarburstThanksFooter({
-  name = "EvoCopilot BV(DU)COEP",
+  name = "EvoCopilot",
   logo,
   thanks = DEFAULT_THANKS,
   tagline = "For exploring with us",
   signoff = "Ideas into intelligence. Intelligence into impact.",
   links = DEFAULT_LINKS,
-  email = "contact@BV(DU)COEP-evocopilot.org",
+  email = "evocopilotai@gmail.com",
   phone = "",
   copiedLabel = "Copied!",
   height = "auto",

@@ -24,16 +24,9 @@ export const Join = () => {
             </span>
             <div className="flex flex-col">
               <span className="font-mono text-[11px] uppercase tracking-widest text-[#EE4326] font-semibold">
-                CHAPTER MEMBERSHIP // ADMISSIONS
-              </span>
-              <span className="text-xs text-white/60 tracking-wider uppercase font-medium">
-                {CHAPTER_CONFIG.membership.batch}
+                CHAPTER MEMBERSHIP · ADMISSIONS
               </span>
             </div>
-          </div>
-
-          <div className="mt-4 sm:mt-0 font-mono text-[11px] text-white/50">
-            STATUS // <span className="text-[#EE4326] font-semibold">{CHAPTER_CONFIG.membership.isApplicationOpen ? 'APPLICATIONS OPEN' : 'SESSION ROLLING'}</span>
           </div>
         </div>
 
@@ -44,7 +37,7 @@ export const Join = () => {
             {/* Campus Tag */}
             <div className="inline-flex items-center gap-2 px-2.5 py-1 text-[11px] font-mono uppercase tracking-wider text-white/80 bg-white/5 border border-white/10 rounded-xs">
               <span className="w-1.5 h-1.5 rounded-full bg-[#EE4326] animate-pulse" />
-              BV(DU)COEP Pune Student Community
+              Student Community
             </div>
 
             {/* Headline */}
@@ -86,9 +79,6 @@ export const Join = () => {
                 <ChevronRight className="w-4 h-4" />
               </MagneticButton>
             </div>
-
-
-
           </div>
 
           {/* Right Column: Animated Visual Matrix Leading Into Footer (5 cols) */}
@@ -100,25 +90,25 @@ export const Join = () => {
                   <span className="w-2 h-2 rounded-full bg-[#EE4326]" />
                   <span>COMMUNITY ADMISSIONS PIPELINE</span>
                 </div>
-                <span>BV(DU)COEP-2026</span>
+                <span>TERM-2026</span>
               </div>
 
               {/* Minimal Code & Activity Matrix */}
               <div className="space-y-3 font-mono text-xs">
                 <div className="p-3 bg-[#1C1C1C] border border-white/10 rounded-xs">
-                  <div className="text-[10px] text-[#EE4326] uppercase mb-1 font-semibold">Step 01 // Ingestion</div>
+                  <div className="text-[10px] text-[#EE4326] uppercase mb-1 font-semibold">Step 01 · Ingestion</div>
                   <div className="text-white font-semibold text-xs">Submit Membership Application</div>
                   <div className="text-[11px] text-white/60 mt-0.5">Share your GitHub, interests, and curiosity.</div>
                 </div>
 
                 <div className="p-3 bg-[#1C1C1C] border border-white/10 rounded-xs">
-                  <div className="text-[10px] text-[#F48A25] uppercase mb-1 font-semibold">Step 02 // Alignment</div>
+                  <div className="text-[10px] text-[#F48A25] uppercase mb-1 font-semibold">Step 02 · Alignment</div>
                   <div className="text-white font-semibold text-xs">Informal Technical Discussion</div>
                   <div className="text-[11px] text-white/60 mt-0.5">Meet council leads and discuss areas of curiosity.</div>
                 </div>
 
                 <div className="p-3 bg-[#1C1C1C] border border-white/10 rounded-xs">
-                  <div className="text-[10px] text-[#EE4326] uppercase mb-1 font-semibold">Step 03 // Execution</div>
+                  <div className="text-[10px] text-[#EE4326] uppercase mb-1 font-semibold">Step 03 · Execution</div>
                   <div className="text-white font-semibold text-xs">Deploy With Chapter Squads</div>
                   <div className="text-[11px] text-white/60 mt-0.5">Immediate access to workshops, compute & repositories.</div>
                 </div>
@@ -126,7 +116,7 @@ export const Join = () => {
 
               {/* Bottom Telemetry Bar */}
               <div className="mt-5 pt-3 border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-white/50">
-                <span>CAMPUS: BV(DU)COEP PUNE</span>
+                <span>CAMPUS: PUNE</span>
                 <span className="text-[#EE4326] font-semibold">AUTONOMOUS CHAPTER</span>
               </div>
             </div>
