@@ -9,8 +9,6 @@ import {
   ArrowUpRight,
 } from 'lucide-react';
 
-import YouCanScroll from '../ui/you-can-scroll';
-
 export const Experiences = () => {
 
   const activities = [
@@ -65,15 +63,9 @@ export const Experiences = () => {
   ];
 
   return (
-    /*
-     * IMPORTANT: Do NOT put overflow-hidden on this section wrapper —
-     * it will clip GSAP ScrollTrigger pin and break the YouCanScroll animation.
-     * The kinetic scroller sits outside the padded inner container so it can
-     * span full-width AND pin correctly.
-     */
     <section
       id="experiences"
-      className="relative pt-16 sm:pt-24 pb-0 bg-[#0A0A0A] text-[#FCFBF8] border-b border-white/10"
+      className="relative pt-16 sm:pt-24 pb-16 sm:pb-24 bg-[#0A0A0A] text-[#FCFBF8] border-b border-white/10"
     >
       {/* Editorial Vertical Architectural Guide Lines */}
       <div className="absolute inset-0 pointer-events-none opacity-40">
@@ -168,23 +160,9 @@ export const Experiences = () => {
           })}
         </div>
       </div>
-
-      {/* ── YouCanScroll — OUTSIDE the constrained inner div ── */}
-      <div className="mt-12 sm:mt-16 relative z-10">
-        {/* Label row */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-4 sm:mb-6 flex flex-col sm:flex-row sm:items-end justify-between border-b border-white/10 pb-4">
-          <span className="font-mono text-xs uppercase tracking-wider text-[#EE4326] font-semibold">
-            // KINETIC CADENCE & ENGINEERING DISCIPLINE
-          </span>
-          <span className="text-[11px] font-mono text-white/40 mt-2 sm:mt-0">
-            INTERACTIVE KINETIC FLOW
-          </span>
-        </div>
-        {/* The scroller itself */}
-        <YouCanScroll />
-      </div>
     </section>
   );
 };
 
 export default Experiences;
+
